@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baby Box</title>
+    <link rel="icon" href="iconesite.png" />
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff8a00, #da1b60);
+            color: white;
+            text-align: center;
+        }
+
+        .navbar {
+            background: white;
+            padding: 15px 30px;
+        }
+
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+            color: #da1b60;
+        }
+
+        .nav-link {
+            color: #da1b60 !important;
+            font-weight: 500;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .btn-custom {
+            background: white;
+            color: #da1b60;
+            padding: 12px 24px;
+            font-size: 18px;
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+
+        .btn-custom:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        /* SECTION CARACTÉRISTIQUES */
+        .features {
+            background: white;
+            color: black;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .feature-box {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            /* Toutes les cases prennent la même hauteur */
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">BabyBox</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Fonctionnalités</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECTION HERO -->
+    <section class="hero">
+        <h1 class="display-4 fw-bold">Les box pour bébé arrivent !</h1>
+        <p class="lead mt-3">Soyez parmi les premiers à les découvrir. Inscrivez-vous pour recevoir les dernières
+            nouvelles du produit !</p>
+        <form id="contactForm" class="mt-4">
+            <div class="input-group mb-3">
+                <input type="email" name="email" class="form-control" placeholder="Entrez votre email" required>
+                <button type="submit" class="btn btn-custom">S'inscrire</button>
+            </div>
+        </form>
+    </section>
+
+    <!--GESTION DU FORMULAIRE-->
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            var formData = {
+                email: document.querySelector('[name="email"]').value
+            };
+
+            fetch("https://script.google.com/macros/s/AKfycbzXCc4UInWMHPj5SlNxHh-ROd1IWkz51eBFbhlgKBzVPZkEaLy8u9aUaH85nazdChCccw/exec", {
+                method: "POST",
+                mode: "no-cors",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData)
+            }).then(() => alert("Message envoyé !"));
+        });
+    </script>
+
+    <!-- SECTION CARACTÉRISTIQUES -->
+    <section class="features">
+        <div class="container">
+            <h2 class="fw-bold mb-4">Pourquoi choisir notre produit ?</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3 d-flex">
+                    <div class="feature-box w-100">
+                        <h4>Produits Essentiels</h4>
+                        <p>Des couches, lingettes et vêtements adaptés à l'âge et à la croissance de votre enfant, pour
+                            toujours disposer du nécessaire.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 d-flex">
+                    <div class="feature-box w-100">
+                        <h4>Économies garanties</h4>
+                        <p>Bénéficiez de tarifs réduits grâce à nos partenariats avec des marques locales et faites des
+                            économies sans sacrifier la qualité.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 d-flex">
+                    <div class="feature-box w-100">
+                        <h4>Livraison flexible</h4>
+                        <p>Recevez votre boîte directement à votre porte ou retirez-la dans un point de collecte pour
+                            encore plus de commodité.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 d-flex">
+                    <div class="feature-box w-100">
+                        <h4>Écoresponsable</h4>
+                        <p>Encouragez la réutilisation et la réduction de déchets. Nous reprenons certains articles pour
+                            leur donner une seconde vie.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer mt-5 bg-dark text-white py-4">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>À propos</h5>
+                    <p>Un produit innovant conçu pour simplifier votre quotidien.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Liens utiles</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white text-decoration-none">Accueil</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Fonctionnalités</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Suivez-nous</h5>
+                    <a href="#" class="text-white me-2">Facebook</a>
+                    <a href="#" class="text-white me-2">Twitter</a>
+                    <a href="#" class="text-white">Instagram</a>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <p class="mb-0">&copy; 2025 MonProduit. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
